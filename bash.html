@@ -1,0 +1,438 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:10pt helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+	-webkit-column-count:2; /* Chrome, Safari, Opera */
+	-moz-column-count:2; /* Firefox */
+	column-count:2;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:10px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:10px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:10px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:10px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:140%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:120%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: economy;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	body {
+		background-color: white;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+		background-color: white;
+	}
+	code {
+		background-color: white;
+	}
+	pre code {
+		background-color: white;
+	}
+	a {
+		color: black;
+	}
+}
+
+</style>
+<title>Comandos</title>
+
+</head>
+<body>
+<h1>Comandos</h1>
+
+<p>Para saber qué estamos corriendo:</p>
+
+<ul>
+<li><code>type</code></li>
+<li><code>which</code></li>
+<li><code>PATH</code></li>
+<li><code>help / man</code></li>
+</ul>
+
+
+<h1>Composición</h1>
+
+<p><code>cat criticas-charla.txt &gt; /dev/null</code></p>
+
+<p><code>mysql agenda &lt; agenda_140425.backup</code></p>
+
+<p><code>ls /bin | wc -l</code></p>
+
+<h3>Otras formas útiles:</h3>
+
+<ul>
+<li>secuencial                                    <code>;</code></li>
+<li>secuencial con cortocircuito (AND) <code>&amp;&amp;</code></li>
+<li>secuencial con cortocircuito (OR) <code>||</code></li>
+<li>ejecución en subshell                        <code>()</code></li>
+<li>redirección con esteroides               <code>2&gt;&amp;1</code></li>
+</ul>
+
+
+<h1>Expansiones</h1>
+
+<pre><code>rm *.log
+cp minecraft.config{,.backup}
+rm $(cat files_to_delete.txt)
+</code></pre>
+
+<h1>Quotes</h1>
+
+<pre><code>&gt;  VAR=Hola
+&gt;  echo “\”$VAR\””
+“Hola”
+&gt;  echo ‘\’$VAR\’’
+quote&gt; ...
+</code></pre>
+
+<h1>Subshells y entorno</h1>
+
+<ul>
+<li><code>export</code></li>
+<li><code>unset</code></li>
+<li><code>exec</code></li>
+<li><code>source ó .</code></li>
+<li><code>env</code></li>
+<li><code>set</code></li>
+<li><code>(cd foo &amp;&amp; make); pwd</code></li>
+<li><code>export PATH=$PATH:/usr/local/bin; run</code></li>
+<li><code>RAILS_ENV=production rake db:migrate</code></li>
+</ul>
+
+
+<h1>Job control</h1>
+
+<pre><code>./ejecutable &amp;
+jobs
+kill %1
+</code></pre>
+
+<pre><code>Ctrl-Z
+bg
+fg
+kill, ps, top, nice, renice
+</code></pre>
+
+<h1>History</h1>
+
+<p>Bash guarda nuestro historial de comandos:</p>
+
+<pre><code>&gt;   history
+...toda la historia de comandos
+&gt;   history -c
+&gt;   history
+</code></pre>
+
+<p><code>HISTSIZE</code> y <code>HISTFILESIZE</code> controlan cuántos comandos se guardan</p>
+
+<p><code>HISTCONTROL=ignoredups</code> ignora entradas duplicadas en el history</p>
+
+<p>También provee ciertos atajos</p>
+
+<pre><code>&gt;   mv my-program /bin
+mv my-program /bin: Permission denied
+&gt;   !!
+mv my-program /bin: Permission denied
+&gt;   sudo !!
+</code></pre>
+
+<h1>Keyboard shortcuts</h1>
+
+<ul>
+<li>Principio de línea <code>Ctrl - A</code></li>
+<li>Fin de línea <code>Ctrl - E</code></li>
+<li>Borrar linea entera <code>Ctrl - U</code></li>
+<li>Borrar resto de línea <code>Ctrl - K</code></li>
+<li>Borrar palabra <code>Ctrl - W</code></li>
+<li>Limpiar pantalla <code>Ctrl - L</code></li>
+<li>History search <code>Ctrl - R</code></li>
+</ul>
+
+
+<h1>Navegación directorios</h1>
+
+<ul>
+<li><code>pwd</code></li>
+<li><code>cd</code></li>
+<li><code>cd -</code></li>
+<li><code>pushd, popd, dirs*</code></li>
+</ul>
+
+
+<h1>Funciones</h1>
+
+<pre><code>&gt; function saludar {
+   echo Hola $1
+   return 0
+}
+&gt; saludar Mati
+Hola Mati
+&gt; saludar Mati &amp;&amp; date
+Hola Mati
+</code></pre>
+
+<h2>Pseudo variables</h2>
+
+<ul>
+<li><code>$0</code> Nombre de la función, shell o script</li>
+<li><code>$1, $2, ...</code> Parámetros por posición</li>
+<li><code>$*</code> Lista de parámetros: <code>“$1” “$2” “$3”...</code></li>
+<li><code>$@</code> Parámetros concatenados: <code>“$1 $2 $3…”</code></li>
+<li><code>$#</code> Cantidad de parámetros</li>
+<li><code>$?</code> Último exit status</li>
+<li><code>$$</code> PID del shell actual</li>
+</ul>
+
+
+<h2>Control de flujo</h2>
+
+<pre><code>if condition; then
+    commands
+else
+    commands
+fi
+</code></pre>
+
+<pre><code>while condition; do
+    commands
+done
+</code></pre>
+
+<pre><code>for var in elements
+do
+    commands with $var
+done
+</code></pre>
+
+<h1>Customización</h1>
+
+<p>Archivos de inicialización:</p>
+
+<ul>
+<li>.bash_profile</li>
+<li>.bash_login</li>
+<li>.profile</li>
+<li>.bashrc</li>
+</ul>
+
+
+<p>Pueden aprovecharlos para customizar prompt, aliases, y PATH.</p>
+
+<h3>Ejemplo</h3>
+
+<pre><code>[.bashrc]
+…
+
+PS1='\u@\h \w\a ’
+PATH=$PATH:$HOME/bin
+
+alias ll=’ls -l’
+alias be=’bundle exec’
+alias rr=’brew services restart rabbitmq’
+</code></pre>
+
+<h1>Utilidades</h1>
+
+<pre><code>cp ~/Downloads/bashrc ~
+mv ~/bashrc ~/.bashrc
+rm ~/Downloads/bashrc
+ln -s ~/.bashrc ~user2/.bashrc
+touch new_file
+</code></pre>
+
+<pre><code>cat foo.txt bar.txt &gt; foobar.txt
+cat - &gt; foo.txt
+tail -n 200 /var/log/messages
+tail -f /var/log/messages
+less /var/log/message
+</code></pre>
+
+<p>Shortcuts en less: <code>Ctrl-F, Ctrl-B, q, F, /, ?, n, N, &lt;space&gt;, j, k, G, =</code></p>
+
+<pre><code>cut -f1 -d : /etc/passwd | sort
+for i in $(seq 1 10); do echo $i; done
+wc -l /etc/passwd
+</code></pre>
+
+<h3>Find</h3>
+
+<pre><code>find app -name ‘*.rb’ | xargs grep ‘def foo’
+find . -name ‘*.bak’ -print0 | xargs -0 rm
+find . -name ‘*.bak’ -exec rm {} \;
+</code></pre>
+
+<h3>Grep</h3>
+
+<pre><code>grep foo *
+grep -v foo *
+grep -n foo *
+grep -r foo *
+git grep foo
+cat f.txt | sed ‘s/hola/chau/g’
+sed -i ‘s/hola/chau/g’ f.txt
+</code></pre>
+
+<h3>HTTP</h3>
+
+<ul>
+<li><p><strong>curl</strong> cliente HTTP genérico</p></li>
+<li><p><strong>wget</strong> GET requests, sigue redirects, descarga respuesta a un archivo</p></li>
+</ul>
+
+
+<pre><code>curl https://api.github.com/meta
+wget http://manas.com.ar/
+
+curl -X DELETE -u $USER:$PASS https://api.github.com/repos/$ORG/$REPO
+</code></pre>
+
+<h3>Compresión</h3>
+
+<ul>
+<li><p>Comprimir archivos
+<code>tar czf foo.tar.gz files</code></p></li>
+<li><p>Listar archivos comprimidos
+<code>tar tzf foo.tar.gz</code></p></li>
+<li><p>Descomprimir
+<code>tar xzf foo.tar.gz</code></p></li>
+<li><p>Comprimir stdin
+<code>tar cf - files | gzip -c - &gt; foo.tar.gz</code></p></li>
+</ul>
+
+
+<h3>Netcat</h3>
+
+<ul>
+<li><p>Gus hace
+<code>nc -l 8989 &gt; xp.vm</code></p></li>
+<li><p>Mauri hace
+<code>cat windows-xp-sp2-sqlserver.vm | nc bosatsu.local 8989</code></p></li>
+</ul>
+
+
+<h3>SSH</h3>
+
+<p>Login remoto:
+<code>ssh bosatsu.local</code></p>
+
+<p>Port forwarding:</p>
+
+<pre><code>ssh staging -L 9201:localhost:9200
+ssh public-host -R 9200:private-host:9201
+</code></pre>
+
+<p>X forwarding:</p>
+
+<pre><code>ssh hostname -X
+google-chrome
+</code></pre>
+
+<h3>Lsof y Netstat</h3>
+
+<ul>
+<li><p>Listar file descriptors abiertos por un proceso
+<code>lsof -p PID</code></p></li>
+<li><p>Listar conexiones TCP abiertas
+<code>netstat -p tcp -a</code></p></li>
+</ul>
+
+
+<h3>Nohup y screen</h3>
+
+<p>Si quiero que mi comando no dependa del shell:
+<code>nohup ./heavy-task</code></p>
+
+<p>Si quiero desligar la sesión de esta terminal y volver después: <code>screen</code></p>
+
+<h3>Otras</h3>
+
+<ul>
+<li><code>sleep</code></li>
+<li><code>true, false</code></li>
+<li><code>yes</code></li>
+<li><code>hash -r</code></li>
+<li><code>id</code></li>
+<li><code>groups</code></li>
+<li><code>whoami</code></li>
+</ul>
+
+</body>
+</html>
