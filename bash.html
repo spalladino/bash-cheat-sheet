@@ -254,8 +254,11 @@ Hola Mati
 <ul>
 <li><code>$0</code> Nombre de la función, shell o script</li>
 <li><code>$1, $2, ...</code> Parámetros por posición</li>
-<li><code>$*</code> Lista de parámetros: <code>“$1” “$2” “$3”...</code></li>
-<li><code>$@</code> Parámetros concatenados: <code>“$1 $2 $3…”</code></li>
+<li><code>$*</code> ó <code>$@</code> Todos los parámetros: <code>$1 $2 $3...</code>
+	<ul>
+		<li><code>$*</code> Lista de parámetros: <code>“$1” “$2” “$3”...</code></li>
+		<li><code>$@</code> Parámetros concatenados: <code>“$1 $2 $3…”</code></li>
+	</ul>
 <li><code>$#</code> Cantidad de parámetros</li>
 <li><code>$?</code> Último exit status</li>
 <li><code>$$</code> PID del shell actual</li>

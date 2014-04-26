@@ -126,8 +126,9 @@ Hola Mati
 
 * `$0` Nombre de la función, shell o script
 * `$1, $2, ...` Parámetros por posición
-* `$*` Lista de parámetros: `“$1” “$2” “$3”...`
-* `$@` Parámetros concatenados: `“$1 $2 $3…”`
+* `$*` ó `$@` Todos los parámetros: `$1 $2 $3...`
+  * `"$*"` Lista de parámetros: `“$1” “$2” “$3”...`
+  * `"$@"` Parámetros concatenados: `“$1 $2 $3…”`
 * `$#` Cantidad de parámetros
 * `$?` Último exit status
 * `$$` PID del shell actual
