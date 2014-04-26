@@ -46,7 +46,7 @@ quote> ...
 * `export`
 * `unset`
 * `exec`
-* `source ó .`
+* `source` ó `.`
 * `env`
 * `set`
 * `(cd foo && make); pwd`
